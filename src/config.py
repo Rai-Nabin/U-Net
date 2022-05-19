@@ -1,5 +1,6 @@
-import torch
 import os
+
+import torch
 
 # Base path of the dataset
 DATASET_PATH = os.path.join("dataset", "train")
@@ -25,11 +26,11 @@ NUM_LEVELS = 3
 # Initialize learning rate, number of epochs to train for, and the batch size
 INIT_LR = 0.001
 NUM_EPOCHS = 40
-BATCH_SIZE = 64
+BATCH_SIZE = 2
 
 # Define the input image dimensions
-INPUT_IMAGE_WIDTH = 128
-INPUT_IMAGE_HEIGHT = 128
+INPUT_IMAGE_WIDTH = 572
+INPUT_IMAGE_HEIGHT = 572
 
 # Define threshold to filter weak predictions
 THRESHOLD = 0.5
@@ -37,10 +38,7 @@ THRESHOLD = 0.5
 # DEFINE the path to the base output directory
 BASE_OUTPUT = "output"
 
-# Define the path to the output serialized model, model training, 
+# Define the path to the output serialized model, model training,
 MODEL_PATH = os.path.join(BASE_OUTPUT, "unet_model.pth")
-PLOT_PATH = os.path.sep.join([BASE_OUTPUT], "plot.png")
-TEST_PATH = os.path.sep.join([BASE_OUTPUT], "test_paths.txt")
-
-
-
+PLOT_PATH = os.path.sep.join([BASE_OUTPUT, "plot.png"])
+TEST_PATH = os.path.sep.join([BASE_OUTPUT, "test_paths.txt"])
