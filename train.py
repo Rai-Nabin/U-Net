@@ -20,7 +20,7 @@ def main():
     # Load the image and mask filepaths in a sorted manner
     image_paths = sorted(list(paths.list_images(config.IMAGE_DATASET_PATH)))
     mask_paths = sorted(list(paths.list_images(config.MASK_DATASET_PATH)))
-
+    
     # Partition the data into training and testing splits using 85% of the data for training and the remaining 15% for testing
     split = train_test_split(image_paths, mask_paths,
                              test_size=config.TEST_SPLIT, random_state=42)
@@ -128,19 +128,22 @@ def main():
     print("[INFO]: Total time taken to train the model: {:.2f}s".format(
         end_time-star_time))
 
+    # Serialize the model to disk
+    torch.save(unet_model, config.MODEL_PATH)
+
     # Plot the training loss
     plt.style.use("ggplot")
     plt.figure()
     plt.plot(H["train_loss"], label="train_loss")
-    plt.plot(H["test_loss", ], label="test_loss")
+    plt.plot(H["test_loss"], label="test_loss")
     plt.title("Training Loss on Dataset")
     plt.xlabel("Number of Epochs")
     plt.ylabel("Loss")
     plt.legend(loc="lower left")
     plt.savefig(config.PLOT_PATH)
 
-    # Serialize the model to disk
-    torch.save(unet_model, config.MODEL_PATH)
+    # # Serialize the model to disk
+    # torch.save(unet_model, config.MODEL_PATH)
 
 
 if __name__ == "__main__":

@@ -19,7 +19,7 @@ class SegmentationDataset(Dataset):
 
         # Load the image from disk, swap its channels from BGR to RGB
         image = cv.imread(image_path)
-        # image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+        image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
         # Load the mask from disk 
         mask = cv.imread(mask_path, cv.IMREAD_UNCHANGED)
